@@ -152,10 +152,10 @@ document.getElementById('next').addEventListener('click',()=>{
     if (songIndex < songs.length - 1) {
         songIndex += 1;
     } else {
-        songIndex = 1;
+        songIndex = 0;
     }
     
-    audioElement.src = `songs/s${songIndex}.mp3`;
+    audioElement.src = `songs/s${songIndex+1}.mp3`;
     masterSongName.innerText= songs[songIndex].songName;
     masterArtistName.innerText=songs[songIndex].artistName;
 
@@ -168,14 +168,13 @@ document.getElementById('next').addEventListener('click',()=>{
 })
 
 document.getElementById('prev').addEventListener('click',()=>{
-    if(songIndex<=1){
-        songIndex=1;
-    }
-    else{
-        songIndex-=1;
+    if (songIndex <= 0) {
+        songIndex = songs.length - 1; 
+    } else {
+        songIndex -= 1;
     }
     
-    audioElement.src = `songs/s${songIndex}.mp3`;
+    audioElement.src = `songs/s${songIndex+1}.mp3`;
     masterSongName.innerText= songs[songIndex].songName;
     masterArtistName.innerText=songs[songIndex].artistName;
 
